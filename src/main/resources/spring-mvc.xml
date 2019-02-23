@@ -8,7 +8,7 @@
 
 
 	<!-- 本例中，用来扫描@Controller注解 -->
-	<context:component-scan base-package="com.game.controller,com.game.config">
+	<context:component-scan base-package="com.qfedu.controller,com.qfedu.config">
 	</context:component-scan>
 
 	<!-- <mvc:annotation-driven> -->
@@ -41,7 +41,7 @@
 	<bean id="convertorService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
 		<property name="converters">
 			<list>
-				<bean class="com.game.vo.DateConvert"></bean>
+				<bean class="com.qfedu.vo.DateConvert"></bean>
 			</list>
 		</property>
 	</bean>

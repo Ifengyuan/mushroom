@@ -38,7 +38,7 @@
 		class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
 		<property name="mapperLocations"
-			value="classpath:com/game/mapping/*.xml" />
+			value="classpath:com/qfedu/mapping/*.xml" />
 		<property name="plugins">
 			<array>
 				<bean class="com.github.pagehelper.PageInterceptor">
@@ -55,6 +55,6 @@
 	<!--配置Mapper所在位置 扫描注解或xxxMapper.xml文件 -->
 
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.game.dao"></property>
+		<property name="basePackage" value="com.qfedu.dao"></property>
 	</bean>
 </beans>
