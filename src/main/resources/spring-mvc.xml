@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:p="http://www.springframework.org/schema/p"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+
+
+	<!-- 本例中，用来扫描@Controller注解 -->
+	<context:component-scan base-package="com.game.controller,com.game.config">
+	</context:component-scan>
+
+	<!-- <mvc:annotation-driven> -->
+
+
+	<!---*************************************************************** -->
+	<!-- 配置转换服务 -->
+	<mvc:annotation-driven conversion-service="convertorService">
+		<!-- 处理json里的日期数据，默认日期被fastjson转为时间戳数据 -->
+		<mvc:message-converters>
+			<bean
+					class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+				<property name="objectMapper">
+					<bean class="com.fasterxml.jackson.databind.ObjectMapper">
+						<property name="dateFormat">
+							<bean class="java.text.SimpleDateFormat">
+								<constructor-arg type="java.lang.String"
+												 value="yyyy-MM-dd HH:mm:ss" />
+							</bean>
+						</property>
+					</bean>
+				</property>
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+
+
+
+	<!-- 设置自定义的转换器 -->
+	<bean id="convertorService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+		<property name="converters">
+			<list>
+				<bean class="com.game.vo.DateConvert"></bean>
+			</list>
+		</property>
+	</bean>
+	<!--放行静态资源 -->
+	<mvc:default-servlet-handler></mvc:default-servlet-handler>
+</beans>
