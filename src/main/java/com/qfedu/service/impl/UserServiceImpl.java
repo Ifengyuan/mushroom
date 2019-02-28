@@ -3,14 +3,17 @@ package com.qfedu.service.impl;
 import com.qfedu.dao.UserMapper;
 import com.qfedu.pojo.User;
 import com.qfedu.service.UserService;
+import com.qfedu.vo.EncryptUtil;
 import com.qfedu.vo.JsonBean;
 import com.qfedu.vo.ResultVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
+
 @Service
 public class UserServiceImpl implements UserService {
-    private JsonBean bean;
+    private JsonBean bean = new JsonBean();
     private ResultVo rv;
     @Autowired
     private UserMapper um;
@@ -28,11 +31,12 @@ public class UserServiceImpl implements UserService {
             throw new RuntimeException("用户不存在");
         }
         if(!password.equals(user.getPassword())) {
-            throw new RuntimeException("密码错误");
+            throw new RuntimeException("密碼錯誤");
         }else {
             bean.setCode(0);
         }
         return bean;
+
     }
 
     @Override

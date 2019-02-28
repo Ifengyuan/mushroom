@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qfedu.dao.BrokerMapper">
+  <resultMap id="BaseResultMap" type="com.qfedu.pojo.Broker">
+    <id column="brokerid" jdbcType="INTEGER" property="brokerid" />
+    <result column="userid" jdbcType="INTEGER" property="userid" />
+    <result column="prictureid" jdbcType="INTEGER" property="prictureid" />
+    <result column="brokertel" jdbcType="VARCHAR" property="brokertel" />
+    <result column="workyear" jdbcType="VARCHAR" property="workyear" />
+    <result column="describe" jdbcType="VARCHAR" property="describe" />
+    <result column="telflag" jdbcType="INTEGER" property="telflag" />
+    <result column="regionid" jdbcType="INTEGER" property="regionid" />
+    <result column="communityid" jdbcType="INTEGER" property="communityid" />
+    <result column="usersex" jdbcType="INTEGER" property="usersex" />
+    <result column="userage" jdbcType="INTEGER" property="userage" />
+    <result column="truename" jdbcType="VARCHAR" property="truename" />
+    <result column="qq" jdbcType="VARCHAR" property="qq" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    brokerid, userid, prictureid, brokertel, workyear, describe, telflag, regionid, communityid, 
+    usersex, userage, truename, qq
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_broker
+    where brokerid = #{brokerid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_broker
+    where brokerid = #{brokerid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qfedu.pojo.Broker">
+    insert into t_broker (brokerid, userid, prictureid, 
+      brokertel, workyear, describe, 
+      telflag, regionid, communityid, 
+      usersex, userage, truename, 
+      qq)
+    values (#{brokerid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{prictureid,jdbcType=INTEGER}, 
+      #{brokertel,jdbcType=VARCHAR}, #{workyear,jdbcType=VARCHAR}, #{describe,jdbcType=VARCHAR}, 
+      #{telflag,jdbcType=INTEGER}, #{regionid,jdbcType=INTEGER}, #{communityid,jdbcType=INTEGER}, 
+      #{usersex,jdbcType=INTEGER}, #{userage,jdbcType=INTEGER}, #{truename,jdbcType=VARCHAR}, 
+      #{qq,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qfedu.pojo.Broker">
+    insert into t_broker
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="brokerid != null">
+        brokerid,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="prictureid != null">
+        prictureid,
+      </if>
+      <if test="brokertel != null">
+        brokertel,
+      </if>
+      <if test="workyear != null">
+        workyear,
+      </if>
+      <if test="describe != null">
+        describe,
+      </if>
+      <if test="telflag != null">
+        telflag,
+      </if>
+      <if test="regionid != null">
+        regionid,
+      </if>
+      <if test="communityid != null">
+        communityid,
+      </if>
+      <if test="usersex != null">
+        usersex,
+      </if>
+      <if test="userage != null">
+        userage,
+      </if>
+      <if test="truename != null">
+        truename,
+      </if>
+      <if test="qq != null">
+        qq,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="brokerid != null">
+        #{brokerid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="prictureid != null">
+        #{prictureid,jdbcType=INTEGER},
+      </if>
+      <if test="brokertel != null">
+        #{brokertel,jdbcType=VARCHAR},
+      </if>
+      <if test="workyear != null">
+        #{workyear,jdbcType=VARCHAR},
+      </if>
+      <if test="describe != null">
+        #{describe,jdbcType=VARCHAR},
+      </if>
+      <if test="telflag != null">
+        #{telflag,jdbcType=INTEGER},
+      </if>
+      <if test="regionid != null">
+        #{regionid,jdbcType=INTEGER},
+      </if>
+      <if test="communityid != null">
+        #{communityid,jdbcType=INTEGER},
+      </if>
+      <if test="usersex != null">
+        #{usersex,jdbcType=INTEGER},
+      </if>
+      <if test="userage != null">
+        #{userage,jdbcType=INTEGER},
+      </if>
+      <if test="truename != null">
+        #{truename,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null">
+        #{qq,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qfedu.pojo.Broker">
+    update t_broker
+    <set>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="prictureid != null">
+        prictureid = #{prictureid,jdbcType=INTEGER},
+      </if>
+      <if test="brokertel != null">
+        brokertel = #{brokertel,jdbcType=VARCHAR},
+      </if>
+      <if test="workyear != null">
+        workyear = #{workyear,jdbcType=VARCHAR},
+      </if>
+      <if test="describe != null">
+        describe = #{describe,jdbcType=VARCHAR},
+      </if>
+      <if test="telflag != null">
+        telflag = #{telflag,jdbcType=INTEGER},
+      </if>
+      <if test="regionid != null">
+        regionid = #{regionid,jdbcType=INTEGER},
+      </if>
+      <if test="communityid != null">
+        communityid = #{communityid,jdbcType=INTEGER},
+      </if>
+      <if test="usersex != null">
+        usersex = #{usersex,jdbcType=INTEGER},
+      </if>
+      <if test="userage != null">
+        userage = #{userage,jdbcType=INTEGER},
+      </if>
+      <if test="truename != null">
+        truename = #{truename,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null">
+        qq = #{qq,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where brokerid = #{brokerid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qfedu.pojo.Broker">
+    update t_broker
+    set userid = #{userid,jdbcType=INTEGER},
+      prictureid = #{prictureid,jdbcType=INTEGER},
+      brokertel = #{brokertel,jdbcType=VARCHAR},
+      workyear = #{workyear,jdbcType=VARCHAR},
+      describe = #{describe,jdbcType=VARCHAR},
+      telflag = #{telflag,jdbcType=INTEGER},
+      regionid = #{regionid,jdbcType=INTEGER},
+      communityid = #{communityid,jdbcType=INTEGER},
+      usersex = #{usersex,jdbcType=INTEGER},
+      userage = #{userage,jdbcType=INTEGER},
+      truename = #{truename,jdbcType=VARCHAR},
+      qq = #{qq,jdbcType=VARCHAR}
+    where brokerid = #{brokerid,jdbcType=INTEGER}
+  </update>
+</mapper>

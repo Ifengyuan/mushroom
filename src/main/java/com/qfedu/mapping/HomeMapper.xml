@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qfedu.dao.HomeMapper">
+  <resultMap id="BaseResultMap" type="com.qfedu.pojo.Home">
+    <id column="homeid" jdbcType="INTEGER" property="homeid" />
+    <result column="communityid" jdbcType="INTEGER" property="communityid" />
+    <result column="regionid" jdbcType="INTEGER" property="regionid" />
+    <result column="homeprice" jdbcType="INTEGER" property="homeprice" />
+    <result column="homeway" jdbcType="INTEGER" property="homeway" />
+    <result column="homearea" jdbcType="VARCHAR" property="homearea" />
+    <result column="homestype" jdbcType="INTEGER" property="homestype" />
+    <result column="prictureid" jdbcType="INTEGER" property="prictureid" />
+    <result column="homeurl" jdbcType="VARCHAR" property="homeurl" />
+    <result column="homehot" jdbcType="INTEGER" property="homehot" />
+  </resultMap>
+  <resultMap id="BaseResultMap1" type="com.qfedu.vo.VHome">
+    <id column="homeid" jdbcType="INTEGER" property="homeid" />
+    <result column="comname" jdbcType="VARCHAR" property="comname" />
+    <result column="regionname" jdbcType="VARCHAR" property="regionname" />
+    <result column="homeprice" jdbcType="INTEGER" property="homeprice" />
+    <result column="wayname" jdbcType="VARCHAR" property="wayname" />
+    <result column="homearea" jdbcType="VARCHAR" property="homearea" />
+    <result column="stylename" jdbcType="VARCHAR" property="stylename" />
+    <result column="pictureurl" jdbcType="VARCHAR" property="pictureurl" />
+    <result column="homeurl" jdbcType="VARCHAR" property="homeurl" />
+    <result column="homehot" jdbcType="INTEGER" property="homehot" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    homeid, communityid, regionid, homeprice, homeway, homearea, homestype, prictureid, 
+    homeurl, homehot
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_home
+    where homeid = #{homeid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_home
+    where homeid = #{homeid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qfedu.pojo.Home">
+    insert into t_home (homeid, communityid, regionid, 
+      homeprice, homeway, homearea, 
+      homestype, prictureid, homeurl, 
+      homehot)
+    values (#{homeid,jdbcType=INTEGER}, #{communityid,jdbcType=INTEGER}, #{regionid,jdbcType=INTEGER}, 
+      #{homeprice,jdbcType=INTEGER}, #{homeway,jdbcType=INTEGER}, #{homearea,jdbcType=VARCHAR}, 
+      #{homestype,jdbcType=INTEGER}, #{prictureid,jdbcType=INTEGER}, #{homeurl,jdbcType=VARCHAR}, 
+      #{homehot,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qfedu.pojo.Home">
+    insert into t_home
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="homeid != null">
+        homeid,
+      </if>
+      <if test="communityid != null">
+        communityid,
+      </if>
+      <if test="regionid != null">
+        regionid,
+      </if>
+      <if test="homeprice != null">
+        homeprice,
+      </if>
+      <if test="homeway != null">
+        homeway,
+      </if>
+      <if test="homearea != null">
+        homearea,
+      </if>
+      <if test="homestype != null">
+        homestype,
+      </if>
+      <if test="prictureid != null">
+        prictureid,
+      </if>
+      <if test="homeurl != null">
+        homeurl,
+      </if>
+      <if test="homehot != null">
+        homehot,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="homeid != null">
+        #{homeid,jdbcType=INTEGER},
+      </if>
+      <if test="communityid != null">
+        #{communityid,jdbcType=INTEGER},
+      </if>
+      <if test="regionid != null">
+        #{regionid,jdbcType=INTEGER},
+      </if>
+      <if test="homeprice != null">
+        #{homeprice,jdbcType=INTEGER},
+      </if>
+      <if test="homeway != null">
+        #{homeway,jdbcType=INTEGER},
+      </if>
+      <if test="homearea != null">
+        #{homearea,jdbcType=VARCHAR},
+      </if>
+      <if test="homestype != null">
+        #{homestype,jdbcType=INTEGER},
+      </if>
+      <if test="prictureid != null">
+        #{prictureid,jdbcType=INTEGER},
+      </if>
+      <if test="homeurl != null">
+        #{homeurl,jdbcType=VARCHAR},
+      </if>
+      <if test="homehot != null">
+        #{homehot,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qfedu.pojo.Home">
+    update t_home
+    <set>
+      <if test="communityid != null">
+        communityid = #{communityid,jdbcType=INTEGER},
+      </if>
+      <if test="regionid != null">
+        regionid = #{regionid,jdbcType=INTEGER},
+      </if>
+      <if test="homeprice != null">
+        homeprice = #{homeprice,jdbcType=INTEGER},
+      </if>
+      <if test="homeway != null">
+        homeway = #{homeway,jdbcType=INTEGER},
+      </if>
+      <if test="homearea != null">
+        homearea = #{homearea,jdbcType=VARCHAR},
+      </if>
+      <if test="homestype != null">
+        homestype = #{homestype,jdbcType=INTEGER},
+      </if>
+      <if test="prictureid != null">
+        prictureid = #{prictureid,jdbcType=INTEGER},
+      </if>
+      <if test="homeurl != null">
+        homeurl = #{homeurl,jdbcType=VARCHAR},
+      </if>
+      <if test="homehot != null">
+        homehot = #{homehot,jdbcType=INTEGER},
+      </if>
+    </set>
+    where homeid = #{homeid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qfedu.pojo.Home">
+    update t_home
+    set communityid = #{communityid,jdbcType=INTEGER},
+      regionid = #{regionid,jdbcType=INTEGER},
+      homeprice = #{homeprice,jdbcType=INTEGER},
+      homeway = #{homeway,jdbcType=INTEGER},
+      homearea = #{homearea,jdbcType=VARCHAR},
+      homestype = #{homestype,jdbcType=INTEGER},
+      prictureid = #{prictureid,jdbcType=INTEGER},
+      homeurl = #{homeurl,jdbcType=VARCHAR},
+      homehot = #{homehot,jdbcType=INTEGER}
+    where homeid = #{homeid,jdbcType=INTEGER}
+  </update>
+  <select id="selectAllHome" resultMap="BaseResultMap1">
+    select h.homeid,cc.comname,g.regionname,h.homeprice,h.homearea,s.stylename,p.pictureurl,b.wayname,h.homeurl,h.homehot from t_home h
+    inner join t_region g
+    on h.regionid= g.regionid
+    inner join t_style s
+    on h.homestype = s.styleid
+    inner join t_picture p
+    on h.prictureid = p.pictureid
+    inner join t_community cc
+    on h.communityid = cc.communityid
+    inner join t_way b
+    on h.homeway = b.wayid
+
+  </select>
+  <select id="selecthightHome" resultMap="BaseResultMap1">
+    select h.homeid,cc.comname,g.regionname,h.homeprice,h.homearea,s.stylename,p.pictureurl,b.wayname,h.homeurl,h.homehot from t_home h
+    inner join t_region g
+    on h.regionid= g.regionid
+    inner join t_style s
+    on h.homestype = s.styleid
+    inner join t_picture p
+    on h.prictureid = p.pictureid
+    inner join t_community cc
+    on h.communityid = cc.communityid
+    inner join t_way b
+    on h.homeway = b.wayid
+    where h.homehot=2
+  </select>
+  <select id="selectRegionHome" resultMap="BaseResultMap1">
+    select h.homeid,cc.comname,g.regionname,h.homeprice,h.homearea,s.stylename,p.pictureurl,b.wayname,h.homeurl,h.homehot from t_home h
+    inner join t_region g
+    on h.regionid= g.regionid
+    inner join t_style s
+    on h.homestype = s.styleid
+    inner join t_picture p
+    on h.prictureid = p.pictureid
+    inner join t_community cc
+    on h.communityid = cc.communityid
+    inner join t_way b
+    on h.homeway = b.wayid
+    where h.homehot=3
+  </select>
+  <select id="selectByRegionid" resultMap="BaseResultMap1">
+    select h.homeid,cc.comname,g.regionname,h.homeprice,h.homearea,s.stylename,p.pictureurl,b.wayname,h.homeurl,h.homehot from t_home h
+    inner join t_region g
+    on h.regionid= g.regionid
+    inner join t_style s
+    on h.homestype = s.styleid
+    inner join t_picture p
+    on h.prictureid = p.pictureid
+    inner join t_community cc
+    on h.communityid = cc.communityid
+    inner join t_way b
+    on h.homeway = b.wayid
+    where  h.regionid= #{regionid}
+  </select>
+  <select id="selectByWayId" resultMap="BaseResultMap1">
+    select h.homeid,cc.comname,g.regionname,h.homeprice,h.homearea,s.stylename,p.pictureurl,b.wayname,h.homeurl,h.homehot from t_home h
+    inner join t_region g
+    on h.regionid= g.regionid
+    inner join t_style s
+    on h.homestype = s.styleid
+    inner join t_picture p
+    on h.prictureid = p.pictureid
+    inner join t_community cc
+    on h.communityid = cc.communityid
+    inner join t_way b
+    on h.homeway = b.wayid
+    where h.homeway = #{homeway}
+  </select>
+  <select id="selectByStyleId" resultMap="BaseResultMap1">
+    select h.homeid,cc.comname,g.regionname,h.homeprice,h.homearea,s.stylename,p.pictureurl,b.wayname,h.homeurl,h.homehot from t_home h
+    inner join t_region g
+    on h.regionid= g.regionid
+    inner join t_style s
+    on h.homestype = s.styleid
+    inner join t_picture p
+    on h.prictureid = p.pictureid
+    inner join t_community cc
+    on h.communityid = cc.communityid
+    inner join t_way b
+    on h.homeway = b.wayid
+    where h.homestype = #{homestype}
+  </select>
+</mapper>

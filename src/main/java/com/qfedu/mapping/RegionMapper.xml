@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qfedu.dao.RegionMapper">
+  <resultMap id="BaseResultMap" type="com.qfedu.pojo.Region">
+    <id column="regionid" jdbcType="INTEGER" property="regionid" />
+    <result column="regionname" jdbcType="VARCHAR" property="regionname" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    regionid, regionname
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_region
+    where regionid = #{regionid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_region
+    where regionid = #{regionid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qfedu.pojo.Region">
+    insert into t_region (regionid, regionname)
+    values (#{regionid,jdbcType=INTEGER}, #{regionname,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qfedu.pojo.Region">
+    insert into t_region
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="regionid != null">
+        regionid,
+      </if>
+      <if test="regionname != null">
+        regionname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="regionid != null">
+        #{regionid,jdbcType=INTEGER},
+      </if>
+      <if test="regionname != null">
+        #{regionname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qfedu.pojo.Region">
+    update t_region
+    <set>
+      <if test="regionname != null">
+        regionname = #{regionname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where regionid = #{regionid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qfedu.pojo.Region">
+    update t_region
+    set regionname = #{regionname,jdbcType=VARCHAR}
+    where regionid = #{regionid,jdbcType=INTEGER}
+  </update>
+</mapper>

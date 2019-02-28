@@ -24,7 +24,7 @@
     insert into t_user (userid, username, password, 
       userflag)
     values (#{userid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{userflag,jdbcType=INTEGER})
+      0)
   </insert>
   <insert id="insertSelective" parameterType="com.qfedu.pojo.User">
     insert into t_user
@@ -79,10 +79,7 @@
       userflag = #{userflag,jdbcType=INTEGER}
     where userid = #{userid,jdbcType=INTEGER}
   </update>
-  <select id="selectByName" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List" />
-    from t_user
-    where username = #{username}
+  <select id="selectByName" parameterType="string"  resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" /> from t_user where username = #{username}
   </select>
 </mapper>
