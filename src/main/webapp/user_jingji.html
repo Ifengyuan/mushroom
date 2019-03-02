@@ -3,11 +3,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="Author" contect="http://www.webqin.net">
-<title>蘑菇租房</title>
+<title>抗压租房</title>
 <link rel="shortcut icon" href="images/favicon.ico" />
 <link type="text/css" href="css/css.css" rel="stylesheet" />
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/js.js"></script>
+ <script type="text/javascript" src="vue/vue.min.js"></script>
 <script type="text/javascript">
  $(function(){
 	 //导航定位
@@ -19,10 +20,9 @@
 <body> 
  <div class="header">
   <div class="width1190">
-   <div class="fl">您好，欢迎来到蘑菇租房！</div>
+   <div class="fl">您好，欢迎来到抗压租房！</div>
    <div class="fr">
-    <a href="login.html">登录</a> | 
-    <a href="reg.html">注册</a> | 
+|
     <a href="javascript:;" onclick="AddFavorite(window.location,document.title)">加入收藏</a> | 
     <a href="javascript:;" onclick="SetHome(this,window.location)">设为首页</a>
    </div>
@@ -40,7 +40,7 @@
   <div class="width1190">
    <ul class="nav">
     <li><a href="index.html">首页</a></li>
-    <li><a href="pro_zu.html">租房</a></li>
+    <li><a href="pro_zu.html">普通合租房</a></li>
     <li><a href="pro_hotBrand.html">优选品牌</a></li>
     <li><a href="pro_hotArea.html">热门地区</a></li>
    
@@ -53,99 +53,33 @@
  </div><!--list-nav/-->
  <div class="banner" style="background:url(images/ban.jpg) center center no-repeat;"></div>
  
- <div class="content">
+ <div class="content" id="broker">
   <div class="width1190">
    <div class="vip-left">
-       <div class="vipNav">
-        <h3 class="vipTitle">会员中心</h3>
-        <dl>
-         <dt class="vipIcon3">账户设置</dt>
-          <dd>
-           <a href="user.html">我的资料</a>
-           <a href="user_pwd.html">账户密码设置</a>
-          </dd>
-         <dt class="vipIcon1">我的蘑菇租房</dt>
-          <dd>
-           <a href="user_guanzhu.html">关注房源</a>
-           <a href="user_shenqing.html">申请蘑菇自由经纪人</a>
-           <a href="user_jingji.html" class="vipNavCur">蘑菇自由经纪人</a>
-          </dd>
-        </dl>
-       </div><!--vipNav/-->
-    </div><!--vip-left/-->
-    <div class="vip-right">
-     <h3 class="vipright-title">蘑菇自由经纪人</h3>
-     <div class="jingjiren">
-      <dl>
-       <dt><img src="images/newtx.jpg" /></dt>
+    <div class="vipNav">
+     <h3 class="vipTitle">我的抗压吧</h3>
+     <dl>
+      <dd>
+       <a href="user_shenqing.html" class="vipNavCur">申请抗压吧小吧主</a>
+       <a href="user_jingji.html">抗压吧经纪人</a>
+      </dd>
+     </dl>
+    </div><!--vipNav/-->
+   </div><!--vip-left/-->
+    <div class="vip-right" >
+     <h3 class="vipright-title">抗压自由经纪人</h3>
+     <div class="jingjiren" >
+      <dl v-for="kr in vbro">
+       <dt><img src="images/kangya.jpg"></dt>
        <dd>
-        <h3>个体 秋枫 <img src="images/phone2.jpg" /> 185221032511</h3>
+        <h3>个体 {{kr.username}} <img src="images/phone2.jpg" /> {{kr.brokertel}}</h3>
         <div class="wuxing"><img src="images/wuxing.jpg" width="104" height="16" /></div>
-        <div class="dizhi">上海市 - 智慧园 - 热门地区</div>
+        <div class="dizhi">郑州市 - {{kr.comname}} - {{kr.regionname}}</div>
        </dd>
        <div class="xunzhang"><img src="images/xunzhang.jpg" width="51" height="50" /></div>
        <div class="clearfix"></div>
       </dl>
-      <dl>
-       <dt><img src="images/newtx.jpg" /></dt>
-       <dd>
-        <h3>个体 秋枫 <img src="images/phone2.jpg" /> 185221032511</h3>
-        <div class="wuxing"><img src="images/wuxing.jpg" width="104" height="16" /></div>
-        <div class="dizhi">上海市 - 智慧园 - 热门地区</div>
-       </dd>
-       <div class="xunzhang"><img src="images/xunzhang.jpg" width="51" height="50" /></div>
-       <div class="clearfix"></div>
-      </dl>
-      <dl>
-       <dt><img src="images/newtx.jpg" /></dt>
-       <dd>
-        <h3>个体 秋枫 <img src="images/phone2.jpg" /> 185221032511</h3>
-        <div class="wuxing"><img src="images/wuxing.jpg" width="104" height="16" /></div>
-        <div class="dizhi">上海市 - 智慧园 - 热门地区</div>
-       </dd>
-       <div class="xunzhang"><img src="images/xunzhang.jpg" width="51" height="50" /></div>
-       <div class="clearfix"></div>
-      </dl>
-      <dl>
-       <dt><img src="images/newtx.jpg" /></dt>
-       <dd>
-        <h3>个体 秋枫 <img src="images/phone2.jpg" /> 185221032511</h3>
-        <div class="wuxing"><img src="images/wuxing.jpg" width="104" height="16" /></div>
-        <div class="dizhi">上海市 - 智慧园 - 热门地区</div>
-       </dd>
-       <div class="xunzhang"><img src="images/xunzhang.jpg" width="51" height="50" /></div>
-       <div class="clearfix"></div>
-      </dl>
-      <dl>
-       <dt><img src="images/newtx.jpg" /></dt>
-       <dd>
-        <h3>个体 秋枫 <img src="images/phone2.jpg" /> 185221032511</h3>
-        <div class="wuxing"><img src="images/wuxing.jpg" width="104" height="16" /></div>
-        <div class="dizhi">上海市 - 智慧园 - 热门地区</div>
-       </dd>
-       <div class="xunzhang"><img src="images/xunzhang.jpg" width="51" height="50" /></div>
-       <div class="clearfix"></div>
-      </dl>
-      <dl>
-       <dt><img src="images/newtx.jpg" /></dt>
-       <dd>
-        <h3>个体 秋枫 <img src="images/phone2.jpg" /> 185221032511</h3>
-        <div class="wuxing"><img src="images/wuxing.jpg" width="104" height="16" /></div>
-        <div class="dizhi">上海市 - 智慧园 - 热门地区</div>
-       </dd>
-       <div class="xunzhang"><img src="images/xunzhang.jpg" width="51" height="50" /></div>
-       <div class="clearfix"></div>
-      </dl>
-      <dl>
-       <dt><img src="images/newtx.jpg" /></dt>
-       <dd>
-        <h3>个体 秋枫 <img src="images/phone2.jpg" /> 185221032511</h3>
-        <div class="wuxing"><img src="images/wuxing.jpg" width="104" height="16" /></div>
-        <div class="dizhi">上海市 - 智慧园 - 热门地区</div>
-       </dd>
-       <div class="xunzhang"><img src="images/xunzhang.jpg" width="51" height="50" /></div>
-       <div class="clearfix"></div>
-      </dl>
+
      </div><!--jingjiren/-->
     </div><!--vip-right/-->
     <div class="clearfix"></div>
@@ -206,5 +140,24 @@
    <p>3、如有任何疑问，请随时拨打我们的电话：400-000-0000</p>
   </div><!--zhidingtext/-->
  </div><!--zhidinggoufang/-->
+ <script type="text/javascript">
+  var bkr = new Vue({
+   el:"#broker",
+   data:{
+    vbro:[]
+   }
+  });
+  $(function () {
+   $.ajax({
+    type:"get",
+    url:"selectBroker.do",
+    success:function (data) {
+     if(data.code == 0){
+      bkr.vbroker = data.data;
+     }
+    }
+   })
+  })
+ </script>
 </body>
 </html>

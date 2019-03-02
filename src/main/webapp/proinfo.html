@@ -12,7 +12,7 @@
 <script type="text/javascript">
  $(function(){
 	 //导航定位
-	 $(".nav li:eq(3)").addClass("navCur");
+	 //$(".nav li:eq(6)").addClass("navCur");
 	 })
 </script>
 </head>
@@ -38,7 +38,6 @@
  </div><!--logo-phone/-->
  <div class="list-nav" style="background: #FF5722;">
   <div class="width1190">
-   
    <ul class="nav">
     <li><a href="index.html">首页</a></li>
     <li><a href="pro_zu.html">普通合租房</a></li>
@@ -53,94 +52,70 @@
   </div><!--width1190/-->
  </div><!--list-nav/-->
  <div class="banner" style="background:url(images/ban.jpg) center center no-repeat;"></div>
- 
- <div class="content" id="bhot">
-  <div class="width1190">
-   <form action="#" method="get" class="pro-search">
-    <table>
-     <tr>
-      <th>房源区域：</th>
-      <td>
-       <a href="javascript:;" class="pro-cur">不限</a>
-       <a href="javascript:;">智慧园</a>
-       <a href="javascript:;">立民村</a>
-       <a href="javascript:;">塘口村</a>
-       <a href="javascript:;">勤劳村</a>
-       <a href="javascript:;">芦胜村</a>
-       <a href="javascript:;">知新村</a>
-      </td>
-     </tr>
-     <tr>
-      <th>价格：</th>
-      <td>
-       <a href="javascript:;" class="pro-cur">不限</a>
-       <a href="javascript:;">500-1000</a>
-       <a href="javascript:;">10001-2000</a>
-       <a href="javascript:;">2001-3000</a>
-       <a href="javascript:;">3001-4000</a>
-       <input type="text" class="protext" /> - <input type="text" class="protext" /> 元 
-       <input type="submit" class="proSub"  value="确定" />
-      </td>
-     </tr>
-     <tr>
-      <th>面积：</th>
-      <td>
-       <a href="javascript:;" class="pro-cur">不限</a>
-       <a href="javascript:;">10平方</a>
-       <a href="javascript:;">20-40平方</a>
-       <a href="javascript:;">41-60平方</a>
-       <a href="javascript:;">61-80平方</a>
-       <a href="javascript:;">100平方以上</a>
-      </td>
-     </tr>
-     <tr>
-      <th>房型：</th>
-      <td>
-       <a href="javascript:;" class="pro-cur">不限</a>
-       <a href="javascript:;">一室一厅</a>
-       <a href="javascript:;">两室一厅</a>
-       <a href="javascript:;">3室一厅</a>
-       <a href="javascript:;">一室一厅一卫</a>
-      </td>
-     </tr>
-    </table>
-    <div class="paixu">
-     <strong>排序：</strong>
-     <a href="javascript:;" class="pai-cur">默认</a>
-     <a href="javascript:;">价格 &or;</a>
-     <a href="javascript:;">最新 &or;</a>
+
+ <div class="content"  >
+  <div class="width1190" style="width:1000px;" id="qwer">
+
+   <div class="proImg fl" >
+    <img :src="info.pictureurl" />
+   </div><!--proImg/-->
+   <div class="proText fr">
+    <h3 class="proTitle">{{info.comname}}  {{info.stylename}}  </h3>
+    <div class="proText1">
+     编号：{{info.homeid}}<br />
+     租价：{{info.homeprice}}元<br />
+     户型：{{info.stylename}}<br />
+     面积：{{info.homearea}}㎡<br />
+     户主电话：15528668818<br />
+     位置：{{info.homeurl}}<br />
+     装修：{{info.fittype}}<br />
+     小区：{{info.comname}}
     </div>
-   </form><!--pro-search/-->
-  </div><!--width1190/-->
-  <div class="width1190">
-   <div class="pro-left">
-    <dl v-for="br in hotb">
-     {{ br.hotid }}
-     <dt><a @click="deatils(br.homeid);"><img :src="br.pictureurl" width="200" height="100" /></a></dt>
-     <dd>
-      <h3><a href="proinfo.html">{{br.fittype}}{{br.stylename}}，楼层好，采光足</a></h3>
-      <div class="pro-wei">
-       <img src="images/weizhi.png" width="12" height="16" /> <strong class="red">{{br.comname}}</strong>
-      </div>
-      <div class="pro-fang">{{br.stylename}} {{br.homearea}}平 南 {{br.homeurl}}</div>
-      <div class="pra-fa">发布人：张先生  发布时间：2015-12-03</div>
-     </dd>
-     <div class="price">¥ <strong>{{br.homeprice}}</strong><span class="font12">元/月</span></div>
-     <div class="clears"></div>
-    </dl>
-
-   </div><!--pro-left/-->
-
+    <div class="xun-car">
+     <a href="javascript:;" class="xwjg">¥<strong>{{info.homeprice}}</strong>元</a>
+     <a href="javascript:;" class="projrgwc">关注房源</a>
+    </div><!--xun-car/-->
+   </div><!--proText/-->
    <div class="clears"></div>
+
   </div><!--width1190/-->
+  <div class="proBox" style="width:1000px;margin:10px auto;">
+   <div class="proEq">
+    <ul class="fl">
+     <li class="proEqCur">房源详情</li>
+     <li>房源图片</li>
+
+    </ul>
+    <div class="lxkf fr"><a href="http://wpa.qq.com/msgrd?v=3&uin=1072631488&site=qq&menu=yes" target="_blank"></a></div>
+    <div class="clears"></div>
+   </div><!--proEq/-->
+   <div class="proList">
+
+    1. 户型方正，无畸形厅室，空间利用率高<br />
+    <br />
+    2. 客厅设大阳台，实现室内空间的向外延展<br />
+    <br />
+    3. 卧室尺寸比例适中，有利于采光和通风，居住舒适<br />
+    <br />
+
+    <img src="images/fang1.jpg" /><img src="images/fang2.jpg" /><img src="images/fang3.jpg" /><img src="images/fang4.jpg" /><img src="images/fang5.jpg" /><img src="images/fang6.jpg" /><img src="images/fang7.jpg" /><img src="images/fang8.jpg" />
+   </div><!--proList/-->
+   <div class="proList">
+    <img src="images/fang1.jpg" /><img src="images/fang2.jpg" /><img src="images/fang3.jpg" /><img src="images/fang4.jpg" /><img src="images/fang5.jpg" /><img src="images/fang6.jpg" /><img src="images/fang7.jpg" />
+   </div><!--proList/-->
+
+   </div><!--proList/-->
+  </div><!--proBox/-->
  </div><!--content/-->
+
+
  
  <div class="footer">
   <div class="width1190">
-   <div class="fl"><a href="index.html"><strong>抗压租房</strong></a><a href="about.html">关于我们</a><a href="contact.html">联系我们</a><a href="user.html">个人中心</a></div>
+   <div class="fl"><a href="index.html"><strong>蘑菇租房</strong></a><a href="about.html">关于我们</a><a href="contact.html">联系我们</a><a href="user.html">个人中心</a></div>
    <div class="fr">
     <dl>
-     <dt><img src="images/downloadCode.png", height="76" /></dt>
+     <dt><img src="images/downloadCode.png" width="76" height="76" /></dt>
      <dd>微信扫一扫<br />房价点评，精彩发布</dd>
     </dl>
     <dl>
@@ -152,7 +127,7 @@
    <div class="clears"></div>
   </div><!--width1190/-->
  </div><!--footer/-->
- <div class="copy">Copyright@ 2015 抗压租房 版权所有 沪ICP备1234567号-0&nbsp;&nbsp;&nbsp;&nbsp;技术支持：<a target="_blank" href="http://www.webqin.net/">秦王网络</a> </div>
+ <div class="copy">Copyright@ 2015 蘑菇租房 版权所有 沪ICP备1234567号-0&nbsp;&nbsp;&nbsp;&nbsp;技术支持：<a target="_blank" href="http://www.webqin.net/">秦王网络</a> </div>
  <div class="bg100"></div>
  <div class="zhidinggoufang">
   <h2>指定购房 <span class="close">X</span></h2>
@@ -189,31 +164,26 @@
    <p>3、如有任何疑问，请随时拨打我们的电话：400-000-0000</p>
   </div><!--zhidingtext/-->
  </div><!--zhidinggoufang/-->
- <script type="text/javascript">
-  var vee = new Vue({
-   el:"#bhot",
-   data:{
-    hotb:[]
-   },
-   methods:{
-    deatils:function (homeid) {
-     window.location.href="proinfo.html?homeid="+homeid;
-    },
+<script type="text/javascript">
+var homeid = window.location.search;
+ var abc=new Vue({
+  el:"#qwer",
+  data:{
+   info:{},
+  }
+ })
 
+ $(function () {
+  $.ajax({
+   type:"get",
+   url:"selectAllHouseId.do"+homeid,
+   success:function (data) {
+    abc.info=data.data;
    }
-
-  });
-  $(function () {
-   $.ajax({
-    type:"get",
-    url:"selectRegionHome.do",
-    success:function (data) {
-     if(data.code == 0){
-      vee.hotb = data.data;
-     }
-    }
-   })
   })
- </script>
+ })
+</script>
+
+
 </body>
 </html>

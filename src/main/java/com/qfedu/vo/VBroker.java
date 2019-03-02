@@ -1,11 +1,18 @@
-package com.qfedu.pojo;
+package com.qfedu.vo;
 
-public class Broker {
+/**
+ * @author: fengyuan
+ * @Description: 该类的功能描述
+ * @date: 2019/3/1 10:47
+ */
+public class VBroker {
+
+
     private Integer brokerid;
 
-    private Integer userid;
+    private String username;
 
-    private Integer prictureid;
+    private String pictureurl;
 
     private String brokertel;
 
@@ -15,9 +22,9 @@ public class Broker {
 
     private Integer telflag;
 
-    private Integer regionid;
+    private String regionname;
 
-    private Integer communityid;
+    private String comname;
 
     private Integer usersex;
 
@@ -27,7 +34,7 @@ public class Broker {
 
     private String qq;
 
-    private Integer hothomeid;
+    private String typename;
 
     public Integer getBrokerid() {
         return brokerid;
@@ -37,20 +44,20 @@ public class Broker {
         this.brokerid = brokerid;
     }
 
-    public Integer getUserid() {
-        return userid;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserid(Integer userid) {
-        this.userid = userid;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public Integer getPrictureid() {
-        return prictureid;
+    public String getPictureurl() {
+        return pictureurl;
     }
 
-    public void setPrictureid(Integer prictureid) {
-        this.prictureid = prictureid;
+    public void setPictureurl(String pictureurl) {
+        this.pictureurl = pictureurl;
     }
 
     public String getBrokertel() {
@@ -58,7 +65,7 @@ public class Broker {
     }
 
     public void setBrokertel(String brokertel) {
-        this.brokertel = brokertel == null ? null : brokertel.trim();
+        this.brokertel = brokertel;
     }
 
     public String getWorkyear() {
@@ -66,15 +73,15 @@ public class Broker {
     }
 
     public void setWorkyear(String workyear) {
-        this.workyear = workyear == null ? null : workyear.trim();
+        this.workyear = workyear;
     }
 
-    public String getDesc() {
+    public String getDescribe() {
         return desc;
     }
 
-    public void setDescribe(String desc) {
-        this.desc = desc == null ? null : desc.trim();
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 
     public Integer getTelflag() {
@@ -85,20 +92,20 @@ public class Broker {
         this.telflag = telflag;
     }
 
-    public Integer getRegionid() {
-        return regionid;
+    public String getRegionname() {
+        return regionname;
     }
 
-    public void setRegionid(Integer regionid) {
-        this.regionid = regionid;
+    public void setRegionname(String regionname) {
+        this.regionname = regionname;
     }
 
-    public Integer getCommunityid() {
-        return communityid;
+    public String getComname() {
+        return comname;
     }
 
-    public void setCommunityid(Integer communityid) {
-        this.communityid = communityid;
+    public void setComname(String comname) {
+        this.comname = comname;
     }
 
     public Integer getUsersex() {
@@ -122,7 +129,7 @@ public class Broker {
     }
 
     public void setTruename(String truename) {
-        this.truename = truename == null ? null : truename.trim();
+        this.truename = truename;
     }
 
     public String getQq() {
@@ -130,14 +137,14 @@ public class Broker {
     }
 
     public void setQq(String qq) {
-        this.qq = qq == null ? null : qq.trim();
+        this.qq = qq;
     }
 
-    public Integer getHothomeid() {
-        return hothomeid;
+    public String getTypename() {
+        return typename;
     }
 
-    public void setHothomeid(Integer hothomeid) {
-        this.hothomeid = hothomeid;
+    public void setTypename(String typename) {
+        this.typename = typename;
     }
 }

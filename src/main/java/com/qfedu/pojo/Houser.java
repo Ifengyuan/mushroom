@@ -1,6 +1,6 @@
 package com.qfedu.pojo;
 
-public class Home {
+public class Houser {
     private Integer homeid;
 
     private Integer communityid;
@@ -20,6 +20,12 @@ public class Home {
     private String homeurl;
 
     private Integer homehot;
+
+    private String fittype;
+
+    private String homedetails;
+
+    private String comjieshao;
 
     public Integer getHomeid() {
         return homeid;
@@ -99,5 +105,29 @@ public class Home {
 
     public void setHomehot(Integer homehot) {
         this.homehot = homehot;
+    }
+
+    public String getFittype() {
+        return fittype;
+    }
+
+    public void setFittype(String fittype) {
+        this.fittype = fittype == null ? null : fittype.trim();
+    }
+
+    public String getHomedetails() {
+        return homedetails;
+    }
+
+    public void setHomedetails(String homedetails) {
+        this.homedetails = homedetails == null ? null : homedetails.trim();
+    }
+
+    public String getComjieshao() {
+        return comjieshao;
+    }
+
+    public void setComjieshao(String comjieshao) {
+        this.comjieshao = comjieshao == null ? null : comjieshao.trim();
     }
 }

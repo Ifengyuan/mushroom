@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="Author" contect="http://www.webqin.net">
@@ -10,9 +10,13 @@
 <link rel="stylesheet" type="text/css" href="layui/css/layui.css"
 	media="all">
 
-<script src="../layui/layui.js"></script>
+<script src="layui/layui.js"></script>
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/js.js"></script>
+<!-- <script type="text/javascript" src="vue/vue.js"></script>-->
+ <script type="text/javascript" src="vue/vue.min.js"></script>
+ <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+
 <script type="text/javascript">
  $(function(){
 	 //导航定位
@@ -26,8 +30,7 @@
   <div class="width1190">
    <div class="fl">您好，欢迎来到抗压租房！</div>
    <div class="fr">
-    <a href="login.html">登录</a> | 
-    <a href="reg.html">注册</a> | 
+
     <a href="javascript:;" onclick="AddFavorite(window.location,document.title)">加入收藏</a> | 
     <a href="javascript:;" onclick="SetHome(this,window.location)">设为首页</a>
    </div>
@@ -46,7 +49,7 @@
    
    <ul class="nav"  >
     <li><a href="index.html">首页</a></li>
-    <li><a href="pro_zu.html">租房</a></li>
+    <li><a href="pro_zu.html">普通合租房</a></li>
     <li><a href="pro_hotBrand.html">优选品牌</a></li>
     <li><a href="pro_hotArea.html">热门地区</a></li>
   
@@ -72,126 +75,73 @@ layui.use('form', function(){
   });
 });
 </script>
- <div class="content">
-  <div class="width1190">
-   <h2 class="title">租房 <a href="pro_zu.html">更多&gt;&gt;</a></h2>
-   <div class="index-fang-list">
-    <dl>
-     <dt><a href="proinfo.html"><img src="images/fang1.jpg" width="286" height="188" /></a></dt>
-     <dd>
-      <h3><a href="proinfo.html"></a>虹桥乐亭</h3>
-      <div class="hui">3室2厅2卫 | 147m² | 精装修</div>
+ <div class="content" id="zszf">
+  <div class="width1190" >
+
+   <h2 class="title">普通合租房 <a href="pro_zu.html">更多&gt;&gt;</a></h2>
+   <div class="index-fang-list" >
+    <dl v-for="(h,index) in vhome" v-if="index < 3">
+     {{ h.hotid }}
+     <dt><a @click="deatils(h.homeid);"><img :src="h.pictureurl" width="286" height="188" /></a></dt>
+     <dd class="property-header clearfix">
+      <div class="pull-left">
+      <h3><a href="proinfo.html"></a>{{h.comname}}</h3>
+      <div class="hui">{{h.stylename}} | {{h.homearea}}m² | {{h.fittype}}</div>
+      </div>
      </dd>
     </dl>
-    <dl>
-     <dt><a href="proinfo.html"><img src="images/fang2.jpg" width="286" height="188" /></a></dt>
-     <dd>
-      <h3><a href="proinfo.html"></a>静安豪景</h3>
-      <div class="hui">3室2厅2卫 | 147m² | 精装修</div>
-     </dd>
-    </dl>
-    <dl>
-     <dt><a href="proinfo.html"><img src="images/fang3.jpg" width="286" height="188" /></a></dt>
-     <dd>
-      <h3><a href="proinfo.html"></a>中凯城市之光(静安)</h3>
-      <div class="hui">3室2厅2卫 | 147m² | 精装修</div>
-     </dd>
-    </dl>
-    <dl>
-     <dt><a href="proinfo.html"><img src="images/fang4.jpg" width="286" height="188" /></a></dt>
-     <dd>
-      <h3><a href="proinfo.html"></a>水塘小区</h3>
-      <div class="hui">3室2厅2卫 | 147m² | 精装修</div>
-     </dd>
-    </dl>
+
     <div class="clears"></div>
    </div><!--index-fang-list/-->
    
    <h2 class="title">优选品牌 <a href="pro_hotBrand.html">更多&gt;&gt;</a></h2>
    <div class="index-fang-list">
-    <dl>
-     <dt><a href="proinfo.html"><img src="images/fang5.jpg" width="286" height="188" /></a></dt>
+
+    <dl  v-for="(hm,index) in vhouse" v-if="index < 3">
+     {{ hm.hotid }}
+     <dt><a @click="deatils(hm.homeid);"><img :src="hm.pictureurl" width="286" height="188" /></a></dt>
      <dd>
-      <h3><a href="proinfo.html"></a>虹桥乐亭</h3>
-      <div class="hui">3室2厅2卫 | 147m² | 精装修</div>
+      <h3><a href="proinfo.html"></a>{{hm.comname}}</h3>
+      <div class="hui">{{hm.stylename}} | {{hm.homearea}}m² | {{hm.fittype}}</div>
      </dd>
     </dl>
-    <dl>
-     <dt><a href="proinfo.html"><img src="images/fang6.jpg" width="286" height="188" /></a></dt>
-     <dd>
-      <h3><a href="proinfo.html"></a>静安豪景</h3>
-      <div class="hui">3室2厅2卫 | 147m² | 精装修</div>
-     </dd>
-    </dl>
-    <dl>
-     <dt><a href="proinfo.html"><img src="images/fang7.jpg" width="286" height="188" /></a></dt>
-     <dd>
-      <h3><a href="proinfo.html"></a>中凯城市之光(静安)</h3>
-      <div class="hui">3室2厅2卫 | 147m² | 精装修</div>
-     </dd>
-    </dl>
-    <dl>
-     <dt><a href="proinfo.html"><img src="images/fang8.jpg" width="286" height="188" /></a></dt>
-     <dd>
-      <h3><a href="proinfo.html"></a>水塘小区</h3>
-      <div class="hui">3室2厅2卫 | 147m² | 精装修</div>
-     </dd>
-    </dl>
+
     <div class="clears"></div>
    </div><!--index-fang-list/-->
    
    <h2 class="title">热门地区 <a href="pro_hotArea.html">更多&gt;&gt;</a></h2>
    <div class="index-ershou">
-    <div class="in-er-left">
-     <a href="proinfo.html"><img src="images/fangt1.jpg" width="380" height="285" /></a>
-     <div class="in-er-left-text"><strong class="fl">闵行南方发的撒的发的司法</strong><strong class="fr alignRight">¥2841</strong></div>
+    <div class="in-er-left"  v-for="(vh,index) in house" v-if="index < 1">
+
+     <a href="proinfo.html"><img :src="vh.pictureurl" width="380" height="285" /></a>
+     <div class="in-er-left-text"><strong class="fl">{{vh.comname}}</strong><strong class="fr alignRight">{{vh.homeprice}}</strong></div>
     </div><!--in-er-left/-->
     <div class="in-er-right">
-     <dl>
-      <dt><a href="proinfo.html"><img src="images/fang1.jpg" width="150" height="115" /></a></dt>
+     <dl  v-for="(vn,index) in thome" v-if="index < 2">
+      {{ vn.hotid }}
+      <dt><a @click="deatils(vn.homeid);"><img :src="vn.pictureurl" width="150" height="115" /></a></dt>
       <dd>
-       <h3><a href="proinfo.html">浦东新区张江日水安华苑</a></h3>
+       <h3><a href="proinfo.html">{{vn.regionname}}{{vn.comname}}</a></h3>
        <div class="in-er-right-text">
-        习近平强调，中方重视发展中南中方重视发展中南“同志加兄弟”的特殊关系。双方要坚持做
+        {{vn.homedetails}}
        </div>
-       <div class="price">¥<strong>2890</strong></div>
+       <div class="price">¥<strong>{{vn.homeprice}}</strong></div>
       </dd>
       <div class="clears"></div>
      </dl>
-     <dl>
-      <dt><a href="proinfo.html"><img src="images/fang3.jpg" width="150" height="115" /></a></dt>
-      <dd>
-       <h3><a href="proinfo.html">浦东新区张江日水安华苑</a></h3>
-       <div class="in-er-right-text">
-        习近平强调，中方重视发展中南中方重视发展中南“同志加兄弟”的特殊关系。双方要坚持做
-       </div>
-       <div class="price">¥<strong>2890</strong></div>
-      </dd>
-      <div class="clears"></div>
-     </dl>
-     <dl>
-      <dt><a href="proinfo.html"><img src="images/fang8.jpg" width="150" height="115" /></a></dt>
-      <dd>
-       <h3><a href="proinfo.html">浦东新区张江日水安华苑</a></h3>
-       <div class="in-er-right-text">
-        习近平强调，中方重视发展中南中方重视发展中南“同志加兄弟”的特殊关系。双方要坚持做
-       </div>
-       <div class="price">¥<strong>2890</strong></div>
-      </dd>
-      <div class="clears"></div>
-     </dl>
-     <dl>
-      <dt><a href="proinfo.html"><img src="images/fang5.jpg" width="150" height="115" /></a></dt>
-      <dd>
-       <h3><a href="proinfo.html">浦东新区张江日水安华苑</a></h3>
-       <div class="in-er-right-text">
-        习近平强调，中方重视发展中南中方重视发展中南“同志加兄弟”的特殊关系。双方要坚持做
-       </div>
-       <div class="price">¥<strong>2890</strong></div>
-      </dd>
-      <div class="clears"></div>
-     </dl>
-     <div class="clears"></div>
+        <dl  v-for="(vn,index) in thome" v-if="index < 2">
+         {{ vn.hotid }}
+            <dt><a @click="deatils(vn.homeid);"><img :src="vn.pictureurl" width="150" height="115" /></a></dt>
+            <dd>
+                <h3><a href="proinfo.html">{{vn.regionname}}{{vn.comname}}</a></h3>
+                <div class="in-er-right-text">
+                    {{vn.homedetails}}
+                </div>
+                <div class="price">¥<strong>{{vn.homeprice}}</strong></div>
+            </dd>
+            <div class="clears"></div>
+        </dl>
+
     </div><!--in-er-right/-->
     <div class="clears"></div>
    </div><!--index-ershou/-->
@@ -272,5 +222,65 @@ layui.use('form', function(){
    <p>3、如有任何疑问，请随时拨打我们的电话：400-000-0000</p>
   </div><!--zhidingtext/-->
  </div><!--zhidinggoufang/-->
+   <script type="text/javascript">
+    var qwer=new Vue({
+     el:"#zszf",
+     data:{
+      vhome:[{
+
+      }],
+      vhouse:[{
+
+      }],
+      house:[{
+
+      }],
+      thome:[]
+     },
+        methods:{
+            deatils:function (homeid) {
+                window.location.href="proinfo.html?homeid="+homeid;
+            },
+
+        }
+    });
+    $(function () {
+     $.ajax({
+      type:"get",
+      url:"selectPutong.do",
+      success:function (data) {
+       qwer.vhome=data.data;
+      }
+     })
+    })
+
+  $(function () {
+   $.ajax({
+    type:"get",
+    url:"selectHightHome.do",
+    success:function (data) {
+     qwer.vhouse=data.data;
+    }
+   })
+  })
+    $(function () {
+        $.ajax({
+            type:"get",
+            url:"selectRegionHome.do",
+            success:function (data) {
+                qwer.house=data.data;
+            }
+        })
+    })
+    $(function () {
+        $.ajax({
+            type:"get",
+            url:"selectRegionHome.do",
+            success:function (data) {
+                qwer.thome=data.data;
+            }
+        })
+    })
+   </script>
 </body>
 </html>

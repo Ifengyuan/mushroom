@@ -1,6 +1,11 @@
 package com.qfedu.vo;
 
-public class VHome {
+/**
+ * @author: fengyuan
+ * @Description: 该类的功能描述
+ * @date: 2019/3/1 15:06
+ */
+public class VHouse {
     private Integer homeid;
 
     private String comname;
@@ -20,6 +25,12 @@ public class VHome {
     private String homeurl;
 
     private Integer homehot;
+
+    private String fittype;
+
+    private String homedetails;
+
+    private String comjieshao;
 
     public Integer getHomeid() {
         return homeid;
@@ -99,5 +110,29 @@ public class VHome {
 
     public void setHomehot(Integer homehot) {
         this.homehot = homehot;
+    }
+
+    public String getFittype() {
+        return fittype;
+    }
+
+    public void setFittype(String fittype) {
+        this.fittype = fittype;
+    }
+
+    public String getHomedetails() {
+        return homedetails;
+    }
+
+    public void setHomedetails(String homedetails) {
+        this.homedetails = homedetails;
+    }
+
+    public String getComjieshao() {
+        return comjieshao;
+    }
+
+    public void setComjieshao(String comjieshao) {
+        this.comjieshao = comjieshao;
     }
 }

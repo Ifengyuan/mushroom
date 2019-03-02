@@ -1,11 +1,14 @@
 package com.qfedu.dao;
 
 import com.qfedu.pojo.Broker;
+import com.qfedu.vo.VBroker;
+
+import java.util.List;
 
 public interface BrokerMapper {
     int deleteByPrimaryKey(Integer brokerid);
 
-    int insert(Broker record);
+    void insert(Broker record);
 
     int insertSelective(Broker record);
 
@@ -14,4 +17,6 @@ public interface BrokerMapper {
     int updateByPrimaryKeySelective(Broker record);
 
     int updateByPrimaryKey(Broker record);
+
+    List<VBroker> selectAllBroker();
 }
